@@ -22,8 +22,10 @@ public class Menu {
             System.out.println("\n--- MENÚ USUARIOS ---");
             System.out.println("1. Agregar usuario");
             System.out.println("2. Agregar Direccion");
-            System.out.println("3. Listar direccion");
-            System.out.println("4. Listar alumnos");
+            System.out.println("3. Listar Direccion");
+            System.out.println("4. Listar Alumnos");
+            System.out.println("5. Listar UsuariosyDirecciones");
+            System.out.println("6. Actualizar la Edad del Alumno");
             System.out.println("0. Salir");
             System.out.print("Opción: ");
             opcion = scanner.nextInt();
@@ -35,6 +37,7 @@ public class Menu {
                 case 3 -> listarDireccion();
                 case 4 -> listar();
                 case 5 -> listarUsuariosDirecciones();///  aLUMNOS
+                case 6 -> actualizarEdad();
                 case 0 -> System.out.println("¡Chau!");
                 default -> System.out.println("Opción inválida");
             }
@@ -42,16 +45,19 @@ public class Menu {
     }
 
     private void agregarAlumno() {
+        System.out.print("id: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
         System.out.println("Apellido: ");
         String apellido = scanner.nextLine();
-        System.out.printf("Edad:");
+        System.out.print("Edad:");
         int edad = scanner.nextInt();
         scanner.nextLine();
         System.out.println("Email: ");
         String email = scanner.nextLine();
-        User user = new User(nombre,apellido,edad,email);
+        User user = new User(id,nombre,apellido,edad,email);
         controller.agregarUsuario(user);
 
     }
@@ -79,17 +85,14 @@ public class Menu {
         usuarios.forEach(System.out::println);
     }
 
-    private void actualizar() {
-        System.out.print("Nuevo nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.println("Apellido: ");
-        String apellido = scanner.nextLine();
-        System.out.print("ID a modificar: ");
+    private void actualizarEdad() {
+        System.out.println("id");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Nueva Edad: ");
         int edad = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Nuevo nombre: ");
-        String email = scanner.nextLine();
-        controller.actualizarUsuario(nombre,apellido, edad,email);
+        controller.actualizarEdad(id,edad);
     }
 
     private void eliminar() {

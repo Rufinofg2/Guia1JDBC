@@ -1,12 +1,14 @@
 package org.example.Mod;
 
 public class User {
+    private int id;
     private String nombre;
     private String apellido;
     private int edad;
     private String email;
 
     public User(){
+        this.id = 0;
         this.nombre = "";
         this.apellido = "";
         this.edad = 0;
@@ -18,11 +20,20 @@ public class User {
         this.nombre = nombre;
     }
 
-    public User (String nombre, String apellido, int edad, String email){
+    public User (int id,String nombre, String apellido, int edad, String email){
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

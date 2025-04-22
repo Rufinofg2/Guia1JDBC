@@ -45,22 +45,21 @@ public class UserDao {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                User u = new User(rs.getString("nombre"), rs.getString("apellido"), rs.getInt("edad"), rs.getString("email"));
+                User u = new User(rs.getInt("id"),rs.getString("nombre"), rs.getString("apellido"), rs.getInt("edad"), rs.getString("email"));
                 lista.add(u);
             }
         } catch (SQLException e) {
-            System.out.println("Error leyendo usuarios: " + e.getMessage());
+            System.out.println("Error leyendo Alumnos: " + e.getMessage());
         }
         return lista;
     }
 
-    // Actualiza un usuario existente
-    public void actualizar(User user) {
-        String sql = "UPDATE usuarios SET nombre = ? WHERE id = ?";
+    // Actualiza la Edad de un Alumno existente
+    public void actualizarEdad(User user) {
+        String sql = "UPDATE alumnos SET Edad = ? WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, user.getNombre());
-            pstmt.setInt(2, user.getEdad());
-            pstmt.setString(3, user.getEmail());
+            pstmt.setInt(2,user.getId());
+            pstmt.setInt(1, user.getEdad());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error actualizando usuario: " + e.getMessage());
@@ -90,7 +89,7 @@ public class UserDao {
             ResultSet rs = stm.executeQuery(sql);
 
             while (rs.next()) {
-                alumno = new User(rs.getString("nombre"), rs.getString("apellido"), rs.getInt("edad"), rs.getString("email"));
+                alumno = new User(rs.getInt("id"),rs.getString("nombre"), rs.getString("apellido"), rs.getInt("edad"), rs.getString("email"));
             }
 
         } catch (SQLException e) {
@@ -101,7 +100,7 @@ public class UserDao {
 
     // Elimina un usuario por su ID
     public void eliminar ( int id){
-        String sql = "DELETE FROM usuarios WHERE id = ?";
+        String sql = "DELETE FROM alumnos WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();

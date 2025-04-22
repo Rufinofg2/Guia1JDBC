@@ -35,8 +35,8 @@ public class UserController {
         return dao.obtenerTodos();
     }
 
-    public void actualizarUsuario(String nuevoNombre,String nuevoApellido,int nuevaEdad, String nuevoMail) {
-        dao.actualizar(new User(nuevoNombre, nuevoApellido ,nuevaEdad, nuevoMail));
+    public void actualizarEdad(int id, int edad) {
+        dao.actualizarEdad(new User(id,edad));
     }
 
 
