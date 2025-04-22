@@ -103,9 +103,6 @@ public class Menu {
         mostrarListaCompleta(listaAlumos);
     }
 
-
-
-
     private void mostrarLista(List<User> lista){
         Iterator<User> iterador = lista.iterator();
         while(iterador.hasNext()){
@@ -125,6 +122,5 @@ public class Menu {
             System.out.println("\n");
         }
     }
-
 }
 

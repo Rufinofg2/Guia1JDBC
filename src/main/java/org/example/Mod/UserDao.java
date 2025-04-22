@@ -51,7 +51,6 @@ public class UserDao {
         } catch (SQLException e) {
             System.out.println("Error leyendo usuarios: " + e.getMessage());
         }
-
         return lista;
     }
 
@@ -81,13 +80,8 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         return mapaDirecciones;
-
-
     }
-
 
     public User alumnoPorId(int id) {
         User alumno = null;
@@ -103,10 +97,8 @@ public class UserDao {
             e.printStackTrace();
         }
         return alumno;
-
-
-
     }
+
     // Elimina un usuario por su ID
     public void eliminar ( int id){
         String sql = "DELETE FROM usuarios WHERE id = ?";
@@ -117,6 +109,5 @@ public class UserDao {
             System.out.println("Error eliminando usuario: " + e.getMessage());
         }
     }
-
 }
 

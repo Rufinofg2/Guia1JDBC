@@ -35,7 +35,6 @@ public class DireccionesDAO {
         }
     }
 
-
     public List<Direcciones> obtenerDirecciones(){
 
         List<Direcciones> listadirec = new ArrayList<>();
@@ -56,8 +55,5 @@ public class DireccionesDAO {
 return listadirec;
 
     }
-
-
-
 
 }
