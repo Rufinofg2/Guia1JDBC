@@ -11,7 +11,7 @@ public class UserDao {
     private Connection conn;
 
     public UserDao() {
-        this.conn = ConexionMySql.conectar();
+        this.conn = ConexionMySql.getInstance().getConexion();
     }
 
     private void crearTablaSiNoExiste() {
